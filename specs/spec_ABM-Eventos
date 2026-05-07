@@ -1,0 +1,87 @@
+# Spec: ABM de Eventos
+
+## Objetivo y contexto
+El propósito de este documento es describir el módulo de Alta, Baja y Modificación (ABM) de eventos para una web-app de gestión de eventos. El módulo permite a administradores y organizadores crear, editar, eliminar y publicar eventos, así como a los usuarios públicos consultar el catálogo de eventos disponibles.
+
+El contexto es una plataforma web de manejo y gestión de eventos, con funcionalidades internas para la administración y una vista pública para el público general.
+
+## Historia de usuario
+**HU-08: ABM de Eventos**
+Como organizador o administrador,
+quiero crear, editar y eliminar eventos,
+para gestionar todo el ciclo de vida de los eventos de la plataforma.
+
+Como público,
+quiero ver la lista de eventos y sus detalles,
+para informarme y participar en los eventos de interés.
+
+*   **Criterio de Aceptación 1:** El sistema debe verificar que no existan eventos iguales.
+*   **Criterio de Aceptación 2:** El sistema no debe permitir la creacion de eventos en ubicaciones ya utilizada por otros eventos.
+## Requisito funcional y reglas de negocio
+Requisitos funcionales:
+* El sistema debe permitir crear un nuevo evento con título, descripción, fecha, hora, ubicación, categoría, aforo y estado (borrador/publicado).
+* El sistema debe permitir editar la información de un evento existente.
+* El sistema debe permitir eliminar un evento del sistema.
+* El sistema debe permitir publicar y despublicar eventos.
+* El sistema debe mostrar al público la lista de eventos publicados.
+* El sistema debe mostrar los detalles completos de cada evento publicado.
+
+Reglas de negocio:
+* Solo usuarios con rol administrador u organizador pueden acceder al ABM de eventos.
+* Un evento con estado "publicado" debe ser visible en la vista pública.
+* Un evento con estado "borrador" no debe ser visible públicamente.
+* La fecha y hora de finalización deben ser posteriores a la fecha y hora de inicio.
+* El título de evento debe ser único dentro del mismo organizador.
+* No se debe permitir crear eventos con fecha pasada.
+
+## Restricciones técnicas específicas de este módulo
+* Implementación como módulo dentro de una web-app responsive.
+* Integración con el sistema de autenticación y gestión de roles existente.
+* Validación de datos tanto en frontend como en backend.
+* Carga y guardado de datos mediante API REST.
+* Soporte para diferentes tamaños de pantalla en la vista pública y administrativa.
+* Uso de un framework web moderno compatible con la arquitectura del proyecto.
+
+## Modelo de datos de este módulo
+Entidad: Evento
+* id: identificador único
+* titulo: texto
+* descripcion: texto largo
+* fecha_inicio: fecha y hora
+* fecha_fin: fecha y hora
+* ubicacion: texto
+* categoria: texto o referencia a tabla de categorías
+* aforo: número entero
+* estado: cadena (borrador/publicado)
+* organizador_id: identificador de usuario responsable
+* imagen_url: texto opcional
+* created_at: timestamp
+* updated_at: timestamp
+
+Entidad: Usuario (referencia al módulo de usuarios existente)
+* id
+* nombre
+* rol
+
+## Plan de tareas
+1. Definir campos y validaciones del formulario de evento.
+2. Diseñar la interfaz de administración de eventos.
+3. Diseñar la vista pública de eventos.
+4. Implementar API REST para CRUD de eventos.
+5. Implementar lógica de roles y permisos.
+6. Implementar validaciones de negocio en backend.
+7. Implementar validaciones de frontend.
+8. Integrar el módulo con la vista pública.
+9. Realizar pruebas unitarias y de integración.
+10. Desplegar y verificar el funcionamiento.
+
+## Estrategia de Verificación
+* Verificar que un administrador u organizador puede crear un evento con todos los campos obligatorios.
+* Verificar que un evento puede editarse y que los cambios se guardan.
+* Verificar que la eliminación elimina el evento definitivamente.
+* Verificar que el estado de publicación controla la visibilidad pública.
+* Verificar que la vista pública muestra solo eventos publicados.
+* Verificar validaciones de fecha, aforo y título único.
+* Revisar la interfaz responsive en distintos dispositivos.
+* Ejecutar pruebas de API para endpoints CRUD.
+* Validar que el módulo respeta las restricciones de roles.
