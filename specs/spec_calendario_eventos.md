@@ -1,6 +1,3 @@
-Excelente, vamos con la segunda Spec: el Calendario de Eventos.
-
-Esta especificación es fundamental porque es la "vidriera" del sistema, donde los participantes verán qué cursos o congresos hay disponibles. Siguiendo el mismo rigor que la anterior, aquí tenés la propuesta:
 Spec: Calendario y Visualización de Eventos
 1. Objetivo y Contexto
 
