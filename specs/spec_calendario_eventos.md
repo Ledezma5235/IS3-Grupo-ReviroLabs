@@ -11,13 +11,13 @@ El objetivo de este módulo es proporcionar una interfaz visual y cronológica d
 
         Criterio de Aceptación: El calendario debe cargar por defecto el mes actual y resaltar los días que tienen al menos un evento programado.
 
-    HU6: Filtrado por tipo de evento.
+    HU7: Filtrado por tipo de evento.
 
         Como usuario, quiero filtrar el calendario por categorías (ej: "Congreso", "Curso", "Charla") para ver solo lo que me interesa.
 
         Criterio de Aceptación: Al aplicar un filtro, la vista del calendario debe actualizarse instantáneamente ocultando los eventos que no coincidan con la categoría seleccionada.
 
-    HU7: Consulta de eventos pasados.
+    HU8: Consulta de eventos pasados.
 
         Como organizador, quiero navegar hacia meses anteriores para consultar el histórico de eventos realizados.
 
