@@ -1,0 +1,113 @@
+# Spec de Notificaciones por Correo Electrónico
+
+## Objetivo y Contexto
+
+Permitir a los usuarios suscritos a eventos recibir notificaciones por correo electrónico en dos momentos clave: un día antes del evento y el día del evento. Esta funcionalidad es opcional y requiere que el usuario active o desactive la recepción de notificaciones desde su perfil o configuración de eventos.
+
+El módulo de notificaciones busca mejorar la asistencia y experiencia del usuario, recordando eventos próximos y facilitando la comunicación oportuna sobre cambios o recordatorios.
+
+## Historias de Usuario y Criterios de Aceptación
+
+**HU-09: Activar o Desactivar correos sobre el evento**
+Como usuario, quiero poder activar o desactivar la recepción de correos electrónicos para los eventos en los que estoy inscrito, de modo que reciba solo las notificaciones que deseo.
+   - Criterios de aceptación:
+     - El usuario puede habilitar o deshabilitar notificaciones por correo electrónico para cada evento inscrito, desde la configuración de su cuenta o desde el detalle de cada evento.
+     - El estado de la preferencia se guarda correctamente y es persistente.
+     - Si el usuario deshabilita las notificaciones, no se envía ningún correo relacionado con el evento.
+
+**HU-10: Correo Recordatorio**Como usuario inscrito a un evento, quiero recibir un correo electrónico un día antes del evento para recordar mi participación.
+   - Criterios de aceptación:
+     - Se envía un correo electrónico 24 horas antes del inicio del evento si el usuario tiene habilitadas las notificaciones.
+     - El correo incluye el nombre del evento, fecha, hora y ubicación o enlace de acceso.
+     - El correo se envía solo a usuarios inscritos y con notificaciones activadas.
+
+**HU-11: Correo Confirmatorio**
+Como usuario inscrito a un evento, quiero recibir un correo electrónico el día del evento para confirmar que, efectivamente, el evento ocurre hoy.
+   - Criterios de aceptación:
+     - Se envía un correo electrónico el mismo día del evento antes de su inicio si el usuario tiene habilitadas las notificaciones.
+     - El correo incluye detalles clave del evento y cualquier información relevante para la asistencia ese día.
+     - No se envía el correo si el evento ya ha finalizado o si el usuario ha cancelado su inscripción.
+
+## Requisitos Funcionales y Reglas de Negocio
+
+* RF1: El sistema debe permitir activar o desactivar la opción de notificaciones por correo para cada usuario y para cada evento inscrito.
+* RF2: Solo los usuarios inscritos en un evento pueden recibir notificaciones de ese evento.
+* RF3: El sistema debe enviar un correo un día antes y otro el día del evento, si el usuario tiene habilitada la opción.
+* RF4: No se deben enviar correos a usuarios que hayan cancelado su inscripción antes de la fecha de notificación.
+* RF5: El sistema debe registrar el estado del envío del correo (enviado, fallido, pendiente) para auditoría y control.
+* RF6: El contenido de los correos debe incluir datos del evento, nombre del usuario, fecha y hora de envío.
+
+Reglas de Negocio:
+
+* RN1: La preferencia de notificaciones es individual, opcional y configurable por evento para cada usuario.
+* RN2: Las notificaciones se envían solo si el evento está confirmado y habilitado para notificaciones.
++ RN3: Si el usuario modifica su preferencia de notificaciones con menos de 24 horas de antelación, el sistema debe respetar la nueva preferencia para el siguiente envío disponible.
+* RN4: En caso de reprogramación de un evento, la notificación del día anterior debe recalcularse con la nueva fecha.
+
+## Restricciones técnicas específicas de este módulo
+
+* Debe integrarse con el servicio de correo electrónico existente del sistema.
+* El envío programado debe manejarse mediante tareas programadas o cron jobs que verifiquen eventos próximos cada cierto intervalo.
+* El sistema debe soportar al menos dos envíos para cada suscripción: recordatorio un día antes y recordatorio el día del evento.
+* El módulo debe poder trabajar con la zona horaria del evento y del usuario para calcular correctamente la hora de envío.
+* Se debe considerar la posibilidad de reintentos automáticos en caso de fallo en el envío de correo.
+* El diseño debe evitar cargar el proceso de registro de eventos y la inscripción, delegando la generación y envío de notificaciones a procesos en segundo plano.
+
+## Modelo de datos de este módulo
+
+Entidades principales:
+
+- Usuario:
+  - id_usuario
+  - nombre
+  - email
+  - notificaciones_habilitadas (boolean)
+
+- Evento:
+  - id_evento
+  - nombre_evento
+  - fecha_inicio
+  - fecha_fin
+  - ubicacion
+  - estado_evento (confirmado, cancelado, reprogramado)
+  - notificaciones_activas (boolean)
+
+- Inscripcion:
+  - id_inscripcion
+  - id_usuario
+  - id_evento
+  - estado_inscripcion (inscripto, cancelado)
+  - fecha_inscripcion
+
+- NotificacionEnvio:
+  - id_notificacion
+  - id_inscripcion
+  - tipo_notificacion (recordatorio_1_dia, recordatorio_dia_evento)
+  - fecha_envio_programada
+  - fecha_envio_real
+  - estado_envio (pendiente, enviado, fallido)
+  - intentos
+  - mensaje_error
+
+## Plan de Tareas
+
+1. Definir y documentar la preferencia de notificaciones en el perfil de usuario y en el modelo de datos.
+2. Implementar la lógica para almacenar y consultar la preferencia de notificaciones.
+3. Extender el modelo de inscripción para incluir estado y relación con notificaciones.
+4. Crear el proceso programado que genera las tareas de envío un día antes y el día del evento.
+5. Desarrollar la integración con el servicio de correo electrónico.
+6. Implementar el registro de envíos y manejo de errores.
+7. Agregar la UI o ajustes en la configuración de usuario para activar/desactivar notificaciones.
+8. Realizar pruebas unitarias y de integración para envíos y preferencias.
+9. Ejecutar pruebas de verificación de la lógica de notificación y el rebalanceo de fechas en la reprogramación.
+
+## Estrategia de Verificación
+
+* Revisar que la preferencia de notificaciones se almacene correctamente y se pueda modificar.
+* Verificar que solo los usuarios inscritos y con notificaciones habilitadas reciban correos.
+* Probar el envío de recordatorios un día antes y el día del evento con eventos de prueba.
+* Simular eventos reprogramados y validar que la notificación del día anterior se recalcula.
+* Comprobar el registro de envíos y el estado de cada intento (enviado/fallido).
+* Validar el comportamiento cuando un usuario cancela la inscripción antes de la fecha de notificación.
+* Probar el envío en diferentes zonas horarias para asegurar cálculo correcto de fechas.
+* Ejecutar pruebas de integración con el servicio de correo y registros de auditoría.
