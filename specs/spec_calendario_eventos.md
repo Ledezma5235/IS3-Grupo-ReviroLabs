@@ -2,6 +2,7 @@ Spec: Calendario y Visualización de Eventos
 1. Objetivo y Contexto
 
 El objetivo de este módulo es proporcionar una interfaz visual y cronológica de todos los eventos académicos disponibles. Debe permitir a los usuarios (tanto registrados como visitantes) explorar la oferta de cursos, charlas y congresos de manera intuitiva, facilitando la búsqueda por fechas y categorías para fomentar la inscripción.
+
 2. Historias de Usuario y Criterios de Aceptación
 
     HU6: Visualización de eventos futuros.
