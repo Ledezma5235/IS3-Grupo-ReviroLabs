@@ -23,13 +23,14 @@ El objetivo de este módulo es proporcionar una interfaz visual y cronológica d
 
         Criterio de Aceptación: El sistema debe permitir la navegación histórica, pero los eventos pasados deben mostrarse con un estilo visual distinto (ej: escala de grises) y deshabilitar el botón de inscripción.
 
-3. Requisitos Funcionales y Reglas de Negocio
+3. Requisitos Funcionales y Reglas de Negocio 
 
     El sistema debe ofrecer vistas por mes, semana y lista (agenda).
-    Al hacer clic en un evento del calendario, se debe abrir un modal o redireccionar a la vista de "Detalles del Evento".
+    Al hacer clic en un evento del calendario, se debe abrir un modal o redireccionar a la vista de "Detalles del Evento". V
 
-    Regla de Negocio: Los eventos con "cupo lleno" deben mostrar una etiqueta de "Agotado" en la vista del calendario.
-    Regla de Negocio: La visibilidad de los eventos en el calendario depende de su estado (solo se muestran eventos en estado "Publicado").
+    Regla de Negocio: Los eventos con "cupo lleno" deben mostrar una etiqueta de "Agotado" en la vista del calendario. V
+     
+    Regla de Negocio: La visibilidad de los eventos en el calendario depende de su estado (solo se muestran eventos en estado "Publicado"). V
 
 4. Restricciones Técnicas
 
