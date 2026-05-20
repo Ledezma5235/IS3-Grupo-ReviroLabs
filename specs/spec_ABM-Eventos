@@ -19,12 +19,12 @@ para informarme y participar en los eventos de interés.
 *   **Criterio de Aceptación 2:** El sistema no debe permitir la creacion de eventos en ubicaciones ya utilizada por otros eventos.
 ## Requisito funcional y reglas de negocio
 Requisitos funcionales:
-* El sistema debe permitir crear un nuevo evento con título, descripción, fecha, hora, ubicación, categoría, aforo y estado (borrador/publicado).
-* El sistema debe permitir editar la información de un evento existente.
-* El sistema debe permitir eliminar un evento del sistema.
-* El sistema debe permitir publicar y despublicar eventos.
-* El sistema debe mostrar al público la lista de eventos publicados.
-* El sistema debe mostrar los detalles completos de cada evento publicado.
+* El sistema debe permitir crear un nuevo evento con título, descripción, fecha, hora, ubicación, categoría, aforo y estado (borrador/publicado). v
+* El sistema debe permitir editar la información de un evento existente. v
+* El sistema debe permitir eliminar un evento del sistema. v
+* El sistema debe permitir publicar y despublicar eventos. v
+* El sistema debe mostrar al público la lista de eventos publicados. v
+* El sistema debe mostrar los detalles completos de cada evento publicado. v
 
 Reglas de negocio:
 * Solo usuarios con rol administrador u organizador pueden acceder al ABM de eventos.
