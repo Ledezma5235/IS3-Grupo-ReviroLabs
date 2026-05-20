@@ -40,3 +40,7 @@ Se requiere interactuar con las siguientes entidades lógicas:
 *   Intentar inscribir a un usuario cuando el cupo actual es igual al cupo máximo (debe fallar).
 *   Intentar inscribir a un usuario 1 minuto después de la fecha límite (debe fallar).
 *   Inscribir al mismo usuario dos veces de forma consecutiva (la segunda debe devolver un error 400 o similar).
+
+## 8. Estado del Desarrollo
+- [x] Análisis y especificación completada.
+- [ ] Desarrollo del backend en curso . . .
