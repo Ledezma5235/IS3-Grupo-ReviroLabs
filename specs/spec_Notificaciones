@@ -30,12 +30,12 @@ Como usuario inscrito a un evento, quiero recibir un correo electrónico el día
 
 ## Requisitos Funcionales y Reglas de Negocio
 
-* RF1: El sistema debe permitir activar o desactivar la opción de notificaciones por correo para cada usuario y para cada evento inscrito.
-* RF2: Solo los usuarios inscritos en un evento pueden recibir notificaciones de ese evento.
-* RF3: El sistema debe enviar un correo un día antes y otro el día del evento, si el usuario tiene habilitada la opción.
-* RF4: No se deben enviar correos a usuarios que hayan cancelado su inscripción antes de la fecha de notificación.
-* RF5: El sistema debe registrar el estado del envío del correo (enviado, fallido, pendiente) para auditoría y control.
-* RF6: El contenido de los correos debe incluir datos del evento, nombre del usuario, fecha y hora de envío.
+* RF1: El sistema debe permitir activar o desactivar la opción de notificaciones por correo para cada usuario y para cada evento inscrito. v
+* RF2: Solo los usuarios inscritos en un evento pueden recibir notificaciones de ese evento. v
+* RF3: El sistema debe enviar un correo un día antes y otro el día del evento, si el usuario tiene habilitada la opción. v
+* RF4: No se deben enviar correos a usuarios que hayan cancelado su inscripción antes de la fecha de notificación. v
+* RF5: El sistema debe registrar el estado del envío del correo (enviado, fallido, pendiente) para auditoría y control. 
+* RF6: El contenido de los correos debe incluir datos del evento, nombre del usuario, fecha y hora de envío. 
 
 Reglas de Negocio:
 
