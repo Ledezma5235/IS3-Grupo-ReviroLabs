@@ -43,4 +43,4 @@ Se requiere interactuar con las siguientes entidades lógicas:
 
 ## 8. Estado del Desarrollo
 - [x] Análisis y especificación completada.
-- [ ] Desarrollo del backend en curso . . .
+- [x] Desarrollo del backend en curso . . .
