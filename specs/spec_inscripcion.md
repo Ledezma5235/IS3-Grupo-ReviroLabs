@@ -9,6 +9,7 @@ Como participante con cuenta activa, quiero inscribirme a un evento para asegura
 *   **Criterio de Aceptación 1:** El sistema debe verificar que la fecha actual sea menor o igual a la fecha límite de inscripción del evento.
 *   **Criterio de Aceptación 2:** El sistema debe rechazar la inscripción si se ha alcanzado el "cupo máximo" de asistentes.
 *   **Criterio de Aceptación 3:** Un mismo usuario no puede inscribirse dos veces al mismo evento.
+*   **Criterio de Seguridad (OWASP - A03:2021-Injection):** El formulario de inscripción debe implementar validación estricta de los datos de entrada y utilizar consultas parametrizadas en el backend para evitar inyecciones SQL que comprometan la base de datos.
 
 **HU-02: Inscripción manual por personal**
 Como organizador, quiero inscribir a una persona manualmente en el sistema para gestionar casos excepcionales o inscripciones presenciales previas.
