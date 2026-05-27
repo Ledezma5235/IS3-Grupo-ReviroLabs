@@ -14,6 +14,8 @@ Como usuario, quiero poder activar o desactivar la recepción de correos electr�
      - El usuario puede habilitar o deshabilitar notificaciones por correo electrónico para cada evento inscrito, desde la configuración de su cuenta o desde el detalle de cada evento.
      - El estado de la preferencia se guarda correctamente y es persistente.
      - Si el usuario deshabilita las notificaciones, no se envía ningún correo relacionado con el evento.
+   - Vulnerabilidad OWASP asociada: A01:2021 – Broken Access Control (específicamente IDOR - Insecure Direct Object References).
+El riesgo: Al guardar la preferencia, si tu endpoint recibe algo como POST /api/preferencias { "id_usuario": 45, "notificaciones_habilitadas": false } y no valida quién hace la petición, un usuario malintencionado podría iterar IDs y apagar (o encender) las notificaciones de toda la base de datos.
 
 **HU-10: Correo Recordatorio**Como usuario inscrito a un evento, quiero recibir un correo electrónico un día antes del evento para recordar mi participación.
    - Criterios de aceptación:
