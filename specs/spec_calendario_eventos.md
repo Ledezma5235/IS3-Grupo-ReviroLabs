@@ -17,6 +17,8 @@ El objetivo de este módulo es proporcionar una interfaz visual y cronológica d
 
         Criterio de Aceptación: Al aplicar un filtro, la vista del calendario debe actualizarse instantáneamente ocultando los eventos que no coincidan con la categoría seleccionada.
 
+        Criterio de Seguridad (OWASP A03:2021): Los parámetros de filtrado por categoría enviados desde el cliente deben ser validados estrictamente en el backend utilizando una lista de valores permitidos. El sistema solo procesará la solicitud si el valor coincide exactamente con los tipos enumerados permitidos (CURSO, CONGRESO, JORNADA, CHARLA). Cualquier otro valor ingresado debe ser rechazado inmediatamente para evitar ataques de inyección SQL.
+
     HU8: Consulta de eventos pasados.
 
         Como organizador, quiero navegar hacia meses anteriores para consultar el histórico de eventos realizados.
