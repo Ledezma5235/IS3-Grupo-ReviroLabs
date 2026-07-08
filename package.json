@@ -1,13 +1,14 @@
 {
   "name": "is3-grupo-revirolabs",
   "version": "1.0.0",
-  "description": "Repositorio de trabajos prácticos de Ingeniería de Software 3 – Grupo ReviroLabs",
+  "description": "Repositorio de trabajos prácticos de Ingeniería de Software 3 - Grupo ReviroLabs",
   "main": "script.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "cucumber": "cucumber-js"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ const {
     validarNombreProducto,
     mostrarMensaje,
     agregar
-} = require("./script");
+} = require("../scripts/script");
 
 test("Un nombre válido devuelve true", () => {
     expect(validarNombreProducto("Monitor")).toBe(true);
